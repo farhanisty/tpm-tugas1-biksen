@@ -17,3 +17,51 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: JetBrainsMono
+      fonts:
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMonoNerdFont-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMonoNerdFont-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMonoNerdFont-Light.ttf
+          weight: 300
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMonoNerdFont-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMonoNerdFont-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMonoNerdFont-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMonoNerdFont-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMonoNerdFont-ExtraBold.ttf
+          weight: 800
+    - family: Jost
+      fonts:
+        - asset: assets/fonts/Jost/Jost-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Jost/Jost-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Jost/Jost-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Jost/Jost-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Jost/Jost-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Jost/Jost-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Jost/Jost-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Jost/Jost-ExtraBold.ttf
+          weight: 800
+    - family: KodeMono
+      fonts:
+        - asset: assets/fonts/Kode_Mono/KodeMono-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Kode_Mono/KodeMono-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Kode_Mono/KodeMono-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Kode_Mono/KodeMono-Bold.ttf
+          weight: 700
+    
