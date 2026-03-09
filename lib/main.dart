@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tpm_tugas1/pages/fifth_menu_page.dart';
 import 'package:tpm_tugas1/pages/hitungdigit_screen.dart';
 import 'package:tpm_tugas1/pages/home_page.dart';
 import 'package:tpm_tugas1/pages/login_page.dart';
@@ -14,7 +15,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MenuKe3(),
+      home: FifthMenuPage(),
     );
   }
 }
