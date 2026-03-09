@@ -16,7 +16,7 @@ class PrimaryButtonComponent extends StatelessWidget{
     return SizedBox(
       width: double.infinity,
       child: OutlinedButton(
-        onPressed: () => {}, 
+        onPressed: onPressed, 
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
