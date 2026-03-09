@@ -1,10 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:tpm_tugas1/components/primary_button_component.dart';
 import 'package:tpm_tugas1/layouts/menu_layout.dart';
+import 'package:tpm_tugas1/services/stopwatch_service.dart';
 import 'package:tpm_tugas1/theme/app_colors.dart';
 
-class FifthMenuPage extends StatelessWidget{
+class FifthMenuPage extends StatefulWidget{
   const FifthMenuPage({super.key});
+
+  @override
+  State<FifthMenuPage> createState() => _FifthMenuPageState();
+}
+
+class _FifthMenuPageState extends State<FifthMenuPage> {
+  StopwatchService stopwatchService = StopwatchService();
+  Duration time = Duration.zero;
+
+  @override
+  void initState() {
+    super.initState();
+
+    stopwatchService.onTick = (duration) {
+      setState(() {
+        time = duration;
+      });
+    };
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +48,7 @@ class FifthMenuPage extends StatelessWidget{
                 borderRadius: BorderRadius.circular(10)
               ),
               child: Text(
-                "00:03:19",
+                stopwatchService.formatTime(time),
                 style: TextStyle(
                   color: AppColors.primaryColor,
                   fontSize: 30,
@@ -41,8 +61,30 @@ class FifthMenuPage extends StatelessWidget{
             Row(
               spacing: 28,
               children: [
-                Expanded(child: PrimaryButtonComponent(text: "Start")),
-                Expanded(child: PrimaryButtonComponent(text: "Reset", backgroundColor: AppColors.light,)),
+                Expanded(child: PrimaryButtonComponent(
+                  text: stopwatchService.state == StopwatchState.running ? "Stop" : "Start",
+                  onPressed: () {
+                    if(stopwatchService.state == StopwatchState.running) {
+                      stopwatchService.stop();
+                    } else {
+                      stopwatchService.start();
+                    }
+                    
+                  },
+                  )
+                ),
+                Expanded(
+                  child: PrimaryButtonComponent(
+                    text: "Reset", 
+                    
+                    onPressed: () {
+                      if(stopwatchService.state == StopwatchState.stopped) {
+                        stopwatchService.reset();
+                      }
+                    },
+                    backgroundColor: stopwatchService.state == StopwatchState.stopped ? AppColors.light : Colors.blueGrey,
+                    )
+                ),
               ],
             )
           ],
