@@ -29,10 +29,16 @@ class MenuLayout extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Icon(
-                          Icons.arrow_back,
-                          color: AppColors.primaryColor,
-                        ),
+                        IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          }, 
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: AppColors.primaryColor,
+                          )
+                        )
+                        ,
                         Text(
                           title,
                           style: TextStyle(
