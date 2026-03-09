@@ -3,11 +3,13 @@ import 'package:tpm_tugas1/theme/app_colors.dart';
 
 class PrimaryButtonComponent extends StatelessWidget{
   final String text;
+  final Color? backgroundColor;
   final VoidCallback? onPressed;
 
   const PrimaryButtonComponent({
     super.key,
     required this.text,
+    this.backgroundColor,
     this.onPressed
   });
 
@@ -16,12 +18,12 @@ class PrimaryButtonComponent extends StatelessWidget{
     return SizedBox(
       width: double.infinity,
       child: OutlinedButton(
-        onPressed: onPressed, 
+        onPressed: onPressed,
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          backgroundColor: AppColors.secondaryColor
+          backgroundColor: backgroundColor ?? AppColors.secondaryColor
         ),
         child: Text(
           text,

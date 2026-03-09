@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tpm_tugas1/pages/fifth_menu_page.dart';
+import 'package:tpm_tugas1/pages/second_menu_page.dart';
 import 'package:tpm_tugas1/theme/app_colors.dart';
 
 class HomePage extends StatelessWidget{
@@ -21,22 +23,73 @@ class HomePage extends StatelessWidget{
                       Row(
                         spacing: 24,
                         children: [
-                          Expanded(child: _buttonMenuComponent("Menu Ke-1", "Penjumlahan & Pengurangan")),
-                          Expanded(child: _buttonMenuComponent("Menu Ke-1", "Ganjil/Genap & Bilangan Prima")),
+                          Expanded(
+                            child: _buttonMenuComponent(
+                              "Menu Ke-1", 
+                              "Penjumlahan & Pengurangan",
+                              () {
+
+                              }
+                            )
+                          ),
+                          Expanded(
+                            child: _buttonMenuComponent(
+                              "Menu Ke-2", 
+                              "Ganjil/Genap & Bilangan Prima",
+                              () {
+                                Navigator.push(
+                                  context, 
+                                  MaterialPageRoute(builder: (context) => const SecondMenuPage() )
+                                );
+                              }
+                            )
+                          ),
                         ],
                       ),
                       SizedBox(height: 16),
                       Row(
                         spacing: 24,
                         children: [
-                          Expanded(child: _buttonMenuComponent("Menu Ke-3", "Jumlah Bilangan")),
-                          Expanded(child: _buttonMenuComponent("Menu Ke-4", "Luas & Volume Piramid")),
+                          Expanded(
+                            child: _buttonMenuComponent(
+                            "Menu Ke-3", 
+                            "Jumlah Bilangan",
+                            () {
+                              Navigator.push(
+                                context, 
+                                MaterialPageRoute(builder: (context) => const SecondMenuPage() )
+                              );
+                            }
+                            )
+                          ),
+                          Expanded(
+                            child: _buttonMenuComponent(
+                              "Menu Ke-4", 
+                              "Luas & Volume Piramid",
+                              () {
+                                Navigator.push(
+                                  context, 
+                                  MaterialPageRoute(builder: (context) => const SecondMenuPage() )
+                                );
+                              }
+                              )
+                            ),
                         ],
                       ),
                       SizedBox(height: 16),
                       Row(
                         children: [
-                          Expanded(child: _buttonMenuComponent("Menu Ke-5", "Stopwatch")),
+                          Expanded(
+                            child: _buttonMenuComponent(
+                              "Menu Ke-5", 
+                              "Stopwatch",
+                              () {
+                                Navigator.push(
+                                  context, 
+                                  MaterialPageRoute(builder: (context) => const FifthMenuPage() )
+                                );
+                              }
+                            )),
                         ],
                       ),
                     ]
@@ -51,9 +104,9 @@ class HomePage extends StatelessWidget{
     );
   }
 
-  OutlinedButton _buttonMenuComponent(String title, String description) {
+  OutlinedButton _buttonMenuComponent(String title, String description, VoidCallback onPressed) {
     return OutlinedButton(
-      onPressed: () => {}, 
+      onPressed: onPressed, 
       style: OutlinedButton.styleFrom(
         side: BorderSide(
           color: AppColors.light,
