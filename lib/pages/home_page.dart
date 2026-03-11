@@ -184,7 +184,7 @@ class HomePage extends StatelessWidget{
           ),
           SizedBox(height: 8,),
           Text(
-            "Hawla Khufyatul",
+            "Hawla Khufyatul (123230021)",
             style: TextStyle(
               fontFamily: "Jost",
               fontWeight: FontWeight.w400,
@@ -194,7 +194,7 @@ class HomePage extends StatelessWidget{
           ),
           SizedBox(height: 8,),
           Text(
-            "Raihana Jasmine",
+            "Raihana Jasmine (123230029)",
             style: TextStyle(
               fontFamily: "Jost",
               fontWeight: FontWeight.w400,
@@ -204,7 +204,7 @@ class HomePage extends StatelessWidget{
           ),
           SizedBox(height: 8,),
           Text(
-            "Riska Salsabila",
+            "Riska Salsabila (123230034)",
             style: TextStyle(
               fontFamily: "Jost",
               fontWeight: FontWeight.w400,
