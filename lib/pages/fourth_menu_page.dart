@@ -158,6 +158,7 @@ class _FourthMenuPageState extends State<FourthMenuPage> {
           TextField(
             controller: _alasController,
             keyboardType: TextInputType.number,
+            maxLength: 10,
             decoration: InputDecoration(
               filled: true,
               fillColor: Colors.white,
@@ -185,6 +186,7 @@ class _FourthMenuPageState extends State<FourthMenuPage> {
           TextField(
             controller: _tinggiController,
             keyboardType: TextInputType.number,
+            maxLength: 10,
             decoration: InputDecoration(
               filled: true,
               fillColor: Colors.white,
