@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tpm_tugas1/pages/home_page.dart';
 import 'package:tpm_tugas1/theme/app_colors.dart';
 
 class LoginPage extends StatefulWidget{
@@ -9,6 +10,25 @@ class LoginPage extends StatefulWidget{
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  void _loginAction() {
+    String username = _usernameController.text;
+    String password = _passwordController.text;
+
+    if(username == "mobileasik" && password == "mobileasik") {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage() ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Login Gagal! Username atau Password tidak valid!"),
+          backgroundColor: Colors.red,
+        )
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +61,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               SizedBox(height: 12,),
               TextField(
+                controller: _usernameController,
                 style: TextStyle(
                   color: AppColors.secondaryColor
                 ),
@@ -59,6 +80,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               SizedBox(height: 8,),
               TextField(
+                controller: _passwordController,
                 obscureText: true,
                 style: TextStyle(
                   color: AppColors.secondaryColor
@@ -80,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 width: double.infinity,
                 child: OutlinedButton(
-                  onPressed: () => {},
+                  onPressed: _loginAction,
                   style: OutlinedButton.styleFrom(
                     backgroundColor: AppColors.secondaryColor,
                     shape: RoundedRectangleBorder(

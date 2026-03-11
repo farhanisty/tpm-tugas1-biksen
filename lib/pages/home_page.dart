@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tpm_tugas1/pages/fifth_menu_page.dart';
+import 'package:tpm_tugas1/pages/first_menu_page.dart';
+import 'package:tpm_tugas1/pages/hitungdigit_screen.dart';
 import 'package:tpm_tugas1/pages/second_menu_page.dart';
 import 'package:tpm_tugas1/pages/fourth_menu_page.dart';
 import 'package:tpm_tugas1/theme/app_colors.dart';
@@ -29,8 +31,10 @@ class HomePage extends StatelessWidget{
                               "Menu Ke-1", 
                               "Penjumlahan & Pengurangan",
                               () {
-                                
-
+                                Navigator.push(
+                                  context, 
+                                  MaterialPageRoute(builder: (context) => const FirstMenuPage() )
+                                );
                               }
                             )
                           ),
@@ -59,7 +63,7 @@ class HomePage extends StatelessWidget{
                             () {
                               Navigator.push(
                                 context, 
-                                MaterialPageRoute(builder: (context) => const SecondMenuPage() )
+                                MaterialPageRoute(builder: (context) => const MenuKe3() )
                               );
                             }
                             )
@@ -181,7 +185,7 @@ class HomePage extends StatelessWidget{
           ),
           SizedBox(height: 8,),
           Text(
-            "Hawla Khufyatul",
+            "Hawla Khufyatul (123230021)",
             style: TextStyle(
               fontFamily: "Jost",
               fontWeight: FontWeight.w400,
@@ -191,7 +195,7 @@ class HomePage extends StatelessWidget{
           ),
           SizedBox(height: 8,),
           Text(
-            "Raihana Jasmine",
+            "Raihana Jasmine (123230029)",
             style: TextStyle(
               fontFamily: "Jost",
               fontWeight: FontWeight.w400,
@@ -201,7 +205,7 @@ class HomePage extends StatelessWidget{
           ),
           SizedBox(height: 8,),
           Text(
-            "Riska Salsabila",
+            "Riska Salsabila (123230034)",
             style: TextStyle(
               fontFamily: "Jost",
               fontWeight: FontWeight.w400,
