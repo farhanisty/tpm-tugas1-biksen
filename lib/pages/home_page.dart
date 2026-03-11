@@ -3,6 +3,7 @@ import 'package:tpm_tugas1/pages/fifth_menu_page.dart';
 import 'package:tpm_tugas1/pages/first_menu_page.dart';
 import 'package:tpm_tugas1/pages/hitungdigit_screen.dart';
 import 'package:tpm_tugas1/pages/second_menu_page.dart';
+import 'package:tpm_tugas1/pages/fourth_menu_page.dart';
 import 'package:tpm_tugas1/theme/app_colors.dart';
 
 class HomePage extends StatelessWidget{
@@ -74,7 +75,7 @@ class HomePage extends StatelessWidget{
                               () {
                                 Navigator.push(
                                   context, 
-                                  MaterialPageRoute(builder: (context) => const SecondMenuPage() )
+                                  MaterialPageRoute(builder: (context) => const FourthMenuPage() )
                                 );
                               }
                               )
