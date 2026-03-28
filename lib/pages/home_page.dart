@@ -4,6 +4,9 @@ import 'package:tpm_tugas1/pages/first_menu_page.dart';
 import 'package:tpm_tugas1/pages/hitungdigit_screen.dart';
 import 'package:tpm_tugas1/pages/second_menu_page.dart';
 import 'package:tpm_tugas1/pages/fourth_menu_page.dart';
+import 'package:tpm_tugas1/pages/seventh_menu_page.dart';
+import 'package:tpm_tugas1/pages/tahun_menu_page.dart';
+import 'package:tpm_tugas1/pages/weton_menu_page.dart';
 import 'package:tpm_tugas1/theme/app_colors.dart';
 
 class HomePage extends StatelessWidget{
@@ -84,20 +87,64 @@ class HomePage extends StatelessWidget{
                       ),
                       SizedBox(height: 16),
                       Row(
+                        spacing: 24,
                         children: [
                           Expanded(
                             child: _buttonMenuComponent(
-                              "Menu Ke-5", 
-                              "Stopwatch",
+                            "Menu Ke-5", 
+                            "Stopwatch",
+                            () {
+                              Navigator.push(
+                                context, 
+                                MaterialPageRoute(builder: (context) => const FifthMenuPage() )
+                              );
+                            }
+                            )
+                          ),
+                          Expanded(
+                            child: _buttonMenuComponent(
+                              "Menu Ke-6", 
+                              "Weton",
                               () {
                                 Navigator.push(
                                   context, 
-                                  MaterialPageRoute(builder: (context) => const FifthMenuPage() )
+                                  MaterialPageRoute(builder: (context) => const WetonMenuPage() )
                                 );
                               }
-                            )),
+                              )
+                            ),
                         ],
                       ),
+                      SizedBox(height: 16),
+                      Row(
+                        spacing: 24,
+                        children: [
+                          Expanded(
+                            child: _buttonMenuComponent(
+                            "Menu Ke-7", 
+                            "Umur Sekarang",
+                            () {
+                              Navigator.push(
+                                context, 
+                                MaterialPageRoute(builder: (context) => const MenuKe7() )
+                              );
+                            }
+                            )
+                          ),
+                          Expanded(
+                            child: _buttonMenuComponent(
+                              "Menu Ke-8", 
+                              "Masehi ke Hijriyah",
+                              () {
+                                Navigator.push(
+                                  context, 
+                                  MaterialPageRoute(builder: (context) => const TahunMenuPage() )
+                                );
+                              }
+                              )
+                            ),
+                        ],
+                      )
                     ]
                   )
                 ),
