@@ -14,15 +14,18 @@ class StopwatchService {
 
   void Function(Duration duration)? onTick;
 
+  // 🔥 tambahan: offset awal
+  Duration _initialOffset = Duration.zero;
+
   void start() {
-    if (_stopwatch.isRunning) return; // cegah start dua kali
+    if (_stopwatch.isRunning) return;
 
     state = StopwatchState.running;
 
     _stopwatch.start();
 
-    _timer = Timer.periodic(const Duration(milliseconds: 1), (_) {
-      onTick?.call(_stopwatch.elapsed);
+    _timer = Timer.periodic(const Duration(milliseconds: 10), (_) {
+      onTick?.call(elapsed);
     });
   }
 
@@ -35,10 +38,21 @@ class StopwatchService {
 
   void reset() {
     state = StopwatchState.reset;
-    
+
     _stopwatch.reset();
-    onTick?.call(_stopwatch.elapsed);
+    _initialOffset = Duration.zero;
+
+    onTick?.call(elapsed);
   }
+
+  // 🔥 set waktu awal (misal mulai dari 1 menit)
+  void setInitialTime(Duration duration) {
+    _initialOffset = duration;
+    onTick?.call(elapsed);
+  }
+
+  // 🔥 getter elapsed pakai offset
+  Duration get elapsed => _initialOffset + _stopwatch.elapsed;
 
   String formatTime(Duration duration) {
     String twoDigits(int n) => n.toString().padLeft(2, '0');
@@ -51,6 +65,4 @@ class StopwatchService {
 
     return "$minutes:$seconds:$milliseconds";
   }
-
-  Duration get elapsed => _stopwatch.elapsed;
 }

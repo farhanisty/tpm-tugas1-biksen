@@ -64,9 +64,15 @@ class _FifthMenuPageState extends State<FifthMenuPage> {
                 Expanded(child: PrimaryButtonComponent(
                   text: stopwatchService.state == StopwatchState.running ? "Stop" : "Start",
                   onPressed: () {
-                    if(stopwatchService.state == StopwatchState.running) {
+                    if (stopwatchService.state == StopwatchState.running) {
                       stopwatchService.stop();
                     } else {
+                      if (stopwatchService.elapsed == Duration.zero) {
+                        stopwatchService.setInitialTime(
+                          Duration(minutes: 0, seconds: 0),
+                        );
+                      }
+
                       stopwatchService.start();
                     }
                     
