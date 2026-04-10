@@ -69,7 +69,7 @@ class _FifthMenuPageState extends State<FifthMenuPage> {
                     } else {
                       if (stopwatchService.elapsed == Duration.zero) {
                         stopwatchService.setInitialTime(
-                          Duration(minutes: 0, seconds: 0),
+                          Duration(minutes: 90, seconds: 0),
                         );
                       }
 

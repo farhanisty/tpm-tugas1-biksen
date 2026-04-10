@@ -57,7 +57,10 @@ class StopwatchService {
   String formatTime(Duration duration) {
     String twoDigits(int n) => n.toString().padLeft(2, '0');
 
-    final minutes = twoDigits(duration.inMinutes.remainder(60));
+    // Gunakan .inMinutes secara langsung (tanpa remainder)
+    // Ini akan menampilkan total menit, misal 65, 120, dst.
+    final minutes = twoDigits(duration.inMinutes); 
+    
     final seconds = twoDigits(duration.inSeconds.remainder(60));
     final milliseconds = (duration.inMilliseconds.remainder(1000) ~/ 10)
         .toString()
