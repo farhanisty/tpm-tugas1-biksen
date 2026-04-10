@@ -46,21 +46,24 @@ class _MenuKe7State extends State<MenuKe7> {
     if (_selectedDate == null) return;
 
     DateTime now = DateTime.now();
- 
-    int yrs = now.year - _selectedDate!.year;
-    int mths = now.month - _selectedDate!.month;
-    int days = now.day - _selectedDate!.day;
+    DateTime birth = _selectedDate!;
+
+    int yrs = now.year - birth.year;
+    int mths = now.month - birth.month;
+    int days = now.day - birth.day;
 
     if (days < 0) {
+      final prevMonth = DateTime(now.year, now.month, 0);
+      days += prevMonth.day;
       mths -= 1;
-      days += 30; 
     }
+
     if (mths < 0) {
       yrs -= 1;
       mths += 12;
     }
 
-    Duration diff = now.difference(_selectedDate!);
+    Duration diff = now.difference(birth);
     int h = diff.inHours % 24;
     int m = diff.inMinutes % 60;
     int s = diff.inSeconds % 60;
