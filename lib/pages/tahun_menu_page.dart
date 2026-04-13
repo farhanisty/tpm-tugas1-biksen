@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hijri/hijri_calendar.dart';
+import 'package:intl/intl.dart';
 import 'package:tpm_tugas1/components/answer_card_component.dart';
 import 'package:tpm_tugas1/components/primary_button_component.dart';
 import 'package:tpm_tugas1/layouts/menu_layout.dart';
@@ -12,90 +14,84 @@ class TahunMenuPage extends StatefulWidget {
 }
 
 class _TahunMenuPageState extends State<TahunMenuPage> {
-  final TextEditingController _masehiInputController = TextEditingController();
+  DateTime? _selectedDate;
   String _hijriyahAnswer = "";
 
-
-
-  int _masehiKeHijriah(int masehi) {
-    return ((masehi - 622) * 33 ~/ 32);
+  // Fungsi untuk memicu DatePicker
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2100),
+    );
+    if (picked != null && picked != _selectedDate) {
+      setState(() {
+        _selectedDate = picked;
+        _hijriyahAnswer = "";
+      });
+    }
   }
 
   void _convertHijriyahAction() {
-    try {
-      int tahunMasehi = int.parse(_masehiInputController.text);
-
-      int hijriyah = _masehiKeHijriah(tahunMasehi);
-
+    if (_selectedDate == null) {
       setState(() {
-        _hijriyahAnswer = "${hijriyah.toString()} Hijriyah";
+        _hijriyahAnswer = "Pilih tanggal terlebih dahulu";
       });
-    } catch(e) {
-      setState(() {
-        _hijriyahAnswer = "Input tidak valid";
-      });
+      return;
     }
+
+    final hDate = HijriCalendar.fromDate(_selectedDate!);
+
+    setState(() {
+      _hijriyahAnswer = hDate.fullDate(); 
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return MenuLayout(
-      title: "Menu Tahun",
+      title: "Konversi Masehi ke Hijriyah",
       content: Column(
-        spacing: 16,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            spacing: 16,
-            children: [
-              Text(
-                "Tahun Masehi",
-                style: TextStyle(
-                  color: AppColors.light,
-                  fontSize: 16,
-                ),
-              ),
-              Expanded(
-                child: TextField(
-                  keyboardType: TextInputType.number,
-                  controller: _masehiInputController,
-                  maxLength: 10,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(
-                        color: AppColors.primaryColor
-                      )
-                    ),
-                    contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 8),
-                    filled: true,
-                    fillColor: AppColors.light,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(
-                        color: AppColors.primaryColor
-                      )
-                    ),
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: AppColors.light.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: AppColors.primaryColor),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    _selectedDate == null
+                        ? "Pilih Tanggal Masehi"
+                        : DateFormat('dd MMMM yyyy').format(_selectedDate!),
+                    style: TextStyle(color: AppColors.light, fontSize: 16),
                   ),
                 ),
-              )
-            ],
+                IconButton(
+                  icon: Icon(Icons.calendar_month, color: AppColors.primaryColor),
+                  onPressed: () => _selectDate(context),
+                ),
+              ],
+            ),
           ),
+          const SizedBox(height: 20),
           PrimaryButtonComponent(
-            text: "Lihat Dalam Hijriyah",
-            onPressed: () {
-              _convertHijriyahAction();
-            },
+            text: "Konversi ke Hijriyah",
+            onPressed: _convertHijriyahAction,
           ),
+          const SizedBox(height: 20),
           AnswerCardComponent(
             answerEntity: AnswerEntity(
-              question: "Tahun Dalam Hijriyah", 
-              answer: _hijriyahAnswer
-            )
-            )
+              question: "Hasil Konversi Eksak:",
+              answer: _hijriyahAnswer.isEmpty ? "-" : _hijriyahAnswer,
+            ),
+          ),
         ],
-      )
+      ),
     );
   }
 }
