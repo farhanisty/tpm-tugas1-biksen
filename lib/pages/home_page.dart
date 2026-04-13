@@ -7,6 +7,7 @@ import 'package:tpm_tugas1/pages/fourth_menu_page.dart';
 import 'package:tpm_tugas1/pages/seventh_menu_page.dart';
 import 'package:tpm_tugas1/pages/tahun_menu_page.dart';
 import 'package:tpm_tugas1/pages/weton_menu_page.dart';
+import 'package:tpm_tugas1/pages/saka_menu_page.dart';
 import 'package:tpm_tugas1/theme/app_colors.dart';
 
 class HomePage extends StatelessWidget{
@@ -144,7 +145,28 @@ class HomePage extends StatelessWidget{
                               )
                             ),
                         ],
-                      )
+                      ),
+                      SizedBox(height: 16),
+                      Row(
+                        spacing: 24,
+                        children: [
+                          Expanded(
+                            child: _buttonMenuComponent(
+                              "Menu Ke-9", 
+                              "Tanggal Saka",
+                              () {
+                                Navigator.push(
+                                  context, 
+                                  MaterialPageRoute(builder: (context) => const SakaMenuPage() )
+                                );
+                              }
+                            )
+                          ),
+                          Expanded(
+                            child: Container() // biar kanan kosong tapi tetap rapi
+                          ),
+                        ],
+                      ),
                     ]
                   )
                 ),
