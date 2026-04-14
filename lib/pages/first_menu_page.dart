@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tpm_tugas1/components/answer_card_component.dart';
 import 'package:tpm_tugas1/components/primary_button_component.dart';
 import 'package:tpm_tugas1/layouts/menu_layout.dart';
+import 'package:decimal/decimal.dart';
 import 'package:tpm_tugas1/theme/app_colors.dart';
 
 class FirstMenuPage extends StatefulWidget {
@@ -20,10 +21,10 @@ class _FirstMenuPageState extends State<FirstMenuPage> {
 
   void hitungPenjumlahan(){
     try{
-      BigInt a = BigInt.parse(angka1Controller.text);
-      BigInt b = BigInt.parse(angka2Controller.text);
+      Decimal a = Decimal.parse(angka1Controller.text);
+      Decimal b = Decimal.parse(angka2Controller.text);
 
-      BigInt result = a + b;
+      Decimal result = a + b;
 
       setState(() {
         hasil = result.toString();
@@ -37,10 +38,10 @@ class _FirstMenuPageState extends State<FirstMenuPage> {
 
   void hitungPengurangan(){
     try{
-      BigInt a = BigInt.parse(angka1Controller.text);
-      BigInt b = BigInt.parse(angka2Controller.text);
+      Decimal a = Decimal.parse(angka1Controller.text);
+      Decimal b = Decimal.parse(angka2Controller.text);
 
-      BigInt result = a - b;
+      Decimal result = a - b;
 
       setState(() {
         hasil = result.toString();

@@ -78,7 +78,7 @@ class _MenuKe7State extends State<MenuKe7> {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime(2000, 1, 31),
-      firstDate: DateTime(1900),
+      firstDate: DateTime(1700),
       lastDate: DateTime.now(),
     );
 
