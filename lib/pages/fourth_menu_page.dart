@@ -36,9 +36,13 @@ class _FourthMenuPageState extends State<FourthMenuPage> {
       }
 
       double luasAlas = a * a;
+
       double apotema = sqrt(pow(a / 2, 2) + pow(t, 2));
       double luasSelimut = 4 * (0.5 * a * apotema);
       double luasPermukaan = luasAlas + luasSelimut;
+      print(t);
+      print(luasAlas + luasSelimut);
+      print(a);
       double volume = (1 / 3) * luasAlas * t;
 
       setState(() {
@@ -46,7 +50,7 @@ class _FourthMenuPageState extends State<FourthMenuPage> {
         if (isLuas) {
 
           _resultAnswer =
-              "Luas Piramid = ${luasPermukaan.toStringAsFixed(2)}\n\n"
+              "Luas Piramid = ${luasPermukaan.toStringAsFixed(7)}\n\n"
               "Keterangan:\n"
               "Panjang sisi : ${a.toStringAsFixed(0)}\n"
               "Tinggi miring : ${t.toStringAsFixed(0)}";
@@ -54,7 +58,7 @@ class _FourthMenuPageState extends State<FourthMenuPage> {
         } else {
 
           _resultAnswer =
-              "Volume Piramid = ${volume.toStringAsFixed(2)}\n\n"
+              "Volume Piramid = ${volume.toStringAsFixed(7)}\n\n"
               "Keterangan:\n"
               "Panjang sisi : ${a.toStringAsFixed(0)}\n"
               "Tinggi piramid : ${t.toStringAsFixed(0)}";
